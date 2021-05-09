@@ -1,2 +1,2 @@
 # leetcode_practice
-    - leafcode coding workbook (algorithm) repository
+    - leetcode coding workbook (algorithm) repository
