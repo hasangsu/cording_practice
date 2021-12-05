@@ -14,11 +14,24 @@ Window {
     title: qsTr("Hello World")
 
     // append row layout (row = 1, column = widget count).
-    RowLayout
+    GridLayout
     {
         // row layout's display options.
         anchors.fill: parent
+        columns: 2
+        rows: 2
 
+        // append text (QLineEdit).
+        TextInput {
+            id: textInput
+            text : "af"
+
+            // set text layout options.
+            Layout.alignment: Qt.AlignCenter
+            Layout.column: 0
+            Layout.row: 0
+            Layout.columnSpan: 2
+        }
         // append button.
         Button {
 
@@ -28,8 +41,10 @@ Window {
             // set button widget display text.
             text : "Ok"
 
-            // set button align.
+            // set button options.
             Layout.alignment: Qt.AlignCenter
+            Layout.column: 0
+            Layout.row: 1;
 
             // set button click event.
             onClicked: {
@@ -40,8 +55,11 @@ Window {
         }
         Button {
             id : cancel_button
-            Layout.alignment: Qt.AlignCenter
             text : "Cancel"
+
+            Layout.alignment: Qt.AlignCenter
+            Layout.column: 1
+            Layout.row: 1;
         }
     }
 }
