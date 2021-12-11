@@ -15,19 +15,19 @@ Item
 
         Button
         {
-            text : "run product1"
+            text : "Input product1"
         }
         Button
         {
-            text : "run product2"
+            text : "Input product2"
         }
         Button
         {
-            text : "run product3"
+            text : "Input product3"
         }
         Button
         {
-            text : "run product4"
+            text : "Input product4"
         }
     }
 }

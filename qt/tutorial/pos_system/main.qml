@@ -7,63 +7,158 @@ import QtQuick.Controls 2.12
 // import qt layouts lib.
 import QtQuick.Layouts 1.12
 
+// import qt messagebox lib.
+import QtQuick.Dialogs 1.1
+
 Window {
-    width: 640
-    height: 480
+    id: id_window
+    width: 1280
+    height: 720
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Pos")
 
-    RowLayout
-    {
-        ColumnLayout
-        {
-            // set id.
-            id : id_editor_columLayout
+    // set font size.
+    readonly property int fontSizeExtraSmall: Qt.application.font.pixelSize * 0.8
+    readonly property int fontSizeMedium: Qt.application.font.pixelSize * 1.5
+    readonly property int fontSizeLarge: Qt.application.font.pixelSize * 2
+    readonly property int fontSizeExtraLarge: Qt.application.font.pixelSize * 5
 
-            // set layout options.
-//            anchors.fill : parent
+    // append shortcut.
+    Shortcut {
+        sequence: "Ctrl+Q"
+        onActivated: Qt.quit()
+    }
 
-            Button
-            {
-                // set id.
-                id : id_input_editor
+    Frame {
+        id: id_frame
+        anchors.fill: parent
+        anchors.margins: 90
 
-                // set text.
-                text : "Input"
+        ColumnLayout {
+            id : id_column_layout_1
 
-                // set on click event.
-                onClicked:
-                {
-                    qml_reader.setSource("qProductInput.qml")
+            // append barcode label & text.
+            RowLayout {
+                id : id_row_layout_1
+
+                Label {
+                    id : id_product_barcode_label
+                    text: qsTr("Barcode")
+                }
+
+                TextInput {
+                    id : id_product_barcode_text
                 }
             }
 
-            Button
-            {
-                // set id.
-                id : id_run_editor
+            // append name label & text.
+            RowLayout {
+                id : id_row_layout_2
 
-                // set text.
-                text : "Run"
+                Label {
+                    id : id_product_name_label
+                    text: qsTr("Name")
+                }
 
-                // set on click event.
-                onClicked:
-                {
-                    qml_reader.setSource("qProductRun.qml")
+                TextInput {
+                    id : id_product_name_text
                 }
             }
-        }
 
-        ColumnLayout
-        {
-            // set id
-            id : id_mainView_columnLayout
+            // append price label & text.
+            RowLayout {
+                id : id_row_layout_3
 
-            Loader
-            {
-                id : qml_reader
-                source : "QProductInput.qml"
+                Label {
+                    id : id_product_price_label
+                    text: qsTr("Price")
+                }
+
+                TextInput {
+                    id : id_product_price_text
+                    text : qsTr("0")
+                    validator: RegExpValidator {regExp: /[0-9]+/}
+                }
             }
+
+            // append button container.
+            Container {
+                id : id_button_container_1
+
+                Layout.fillWidth : false
+                Layout.fillHeight : true
+
+                ButtonGroup {
+                    buttons : id_button_group_row_layout.children
+                }
+
+                contentItem: RowLayout {
+                    id : id_button_group_row_layout
+                    spacing : 3
+
+                    Repeater {
+                        model : id_button_container_1.contentModel
+                    }
+                }
+
+                // append append button.
+                Button {
+                    id : id_append
+                    text : qsTr("Append")
+                    Layout.fillHeight : true
+
+                    // set on click event.
+                    onClicked :
+                    {
+                        var barcode = id_product_barcode_text.text
+                        var name = id_product_name_text.text
+                        var price = parseInt(id_product_price_text.text)
+
+                        var result = productManager.appendProduct(barcode, name, price)
+                        if (result)
+                        {
+                        }
+                    }
+                }
+
+                // append reset button.
+                Button {
+                    id : id_reset
+                    text : qsTr("Reset")
+                    Layout.fillHeight : true
+
+                    // set on click event.
+                    onClicked :
+                    {
+                        // init text edit.
+                        id_product_barcode_text.text = qsTr("")
+                        id_product_name_text.text = qsTr("")
+                        id_product_price_text.text = qsTr("")
+                    }
+                }
+            }
+
+
+
+
+
+
+
+            //                    Button {
+            //                        id : id_run_editor
+            //                        text: qsTr("Run Main")
+            //                        checked: true
+            //                        Layout.fillHeight: true
+
+            //                        // set on click event.
+            //                        onClicked:
+            //                        {
+            //                            id_qml_loader.setSource("qProductRun.qml")
+            //                        }
+            //                    }
+            //                }
         }
     }
 }
+
+
