@@ -27,7 +27,9 @@ Window {
         id: id_wheel
 
         // set image pos.
-        anchors.centerIn: parent
+//        anchors.centerIn: parent
+        x:0
+        y:10
 
         // set image source.
         source: "/images/wheel.png"
@@ -53,8 +55,8 @@ Window {
             console.log(posY)
 
             // why dont move ...?.
-            id_wheel.x = 0;
-            id_wheel.y = 0;
+            id_wheel.x = posX - id_wheel.width / 2.0
+            id_wheel.y = posY - id_wheel.height / 2.0
         }
     }
 
