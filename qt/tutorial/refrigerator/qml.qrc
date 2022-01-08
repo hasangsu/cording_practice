@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>BaseButton.qml</file>
+        <file>LeftFreezerButton.qml</file>
+        <file>TouchPad.qml</file>
+    </qresource>
+</RCC>
