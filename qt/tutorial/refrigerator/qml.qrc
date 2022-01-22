@@ -5,4 +5,7 @@
         <file>LeftFreezerButton.qml</file>
         <file>TouchPad.qml</file>
     </qresource>
+    <qresource prefix="/image">
+        <file>ice.png</file>
+    </qresource>
 </RCC>

@@ -24,7 +24,7 @@ Rectangle {
 
         // set text rectangle size.
         width: parent.width
-        height: parent.height / 6.0
+        height: parent.height
 
         // set text rectangle color.
         border.color: "black"
@@ -36,7 +36,6 @@ Rectangle {
             id: id_text
 
             // set text display text.
-            text: "Default Text"
             font.bold: true
             fontSizeMode: Text.Fit
 
@@ -46,13 +45,6 @@ Rectangle {
             // set text position.
             anchors.centerIn: id_text_rectangle
         }
-    }
-
-    Rectangle {
-        id: id_inside_rectangle
-
-        anchors.top: id_text.bottom
-        anchors.bottom: parent.bottom
     }
 }
 

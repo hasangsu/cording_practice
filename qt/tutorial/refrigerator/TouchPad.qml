@@ -1,56 +1,29 @@
 import QtQuick 2.0
+import QtQuick.Shapes 1.0
 
 Rectangle {
     id: id_rectangle
 
-
-
     Shape {
-        width: 120
-        height: 130
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        // multisample, decide based on your scene settings
-        layer.enabled: true
-        layer.samples: 4
+        id: id_shape
+
+        anchors.fill: parent
 
         ShapePath {
-            fillColor: "black"
-            strokeColor: "darkBlue"
-            strokeWidth: 20
-            capStyle: ShapePath.FlatCap
+            id: id_shape_path
+            strokeColor: "blue"
 
-            PathAngleArc {
-                centerX: 65; centerY: 95
-                radiusX: 45; radiusY: 45
-                startAngle: -180
-                sweepAngle: 180
+            property real xr: 10
+            property real yr: 10
+            startX: id_shape.width / 2
+            startY: id_shape.height / 4
+            PathArc {
+                x: id_shape_path.startX
+                y: id_shape_path.startY -100
+                radiusX: 10; radiusY: 1
+                useLargeArc: true
             }
+
         }
     }
-
-//    Canvas {
-//        anchors.fill: parent
-//        onPaint: {
-//            var ctx = getContext("2d");
-//            ctx.reset();
-
-//            var centreX = width / 2;
-//            var centreY = height / 2;
-
-//            ctx.beginPath();
-//            ctx.fillStyle = "black";
-//            ctx.moveTo(centreX, centreY);
-//            ctx.arc(centreX, centreY, width / 4, 0, Math.PI * 0.5, false);
-//            ctx.lineTo(centreX, centreY);
-//            ctx.fill();
-
-//            ctx.beginPath();
-//            ctx.fillStyle = "red";
-//            ctx.moveTo(centreX, centreY);
-//            ctx.arc(centreX, centreY, width / 4, Math.PI * 0.5, Math.PI * 2, false);
-//            ctx.lineTo(centreX, centreY);
-//            ctx.fill();
-//        }
-//    }
 }

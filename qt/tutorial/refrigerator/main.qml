@@ -7,7 +7,7 @@ Window {
     visible: true
     title: qsTr("Sampel Refrigerator")
 
-    property int frezzerWidth: width * 0.3
+    property int frezzerWidth: width * 0.45
     property int statusWidth: width * 0.1
 
     LeftFreezerButton {
@@ -15,8 +15,9 @@ Window {
         height: parent.height
 
         id: id_left_freezer_button
-
-        m_displayText: "냉동실 온도"
+        m_ButtonDisplayText: "냉동실 온도"
+        m_minTemperature: 0
+        m_maxTemperature: -30
     }
     LeftFreezerButton {
         width : statusWidth
@@ -26,7 +27,7 @@ Window {
 
         id: id_middle_status_button
 
-        m_displayText: "NEO Fresh"
+        m_ButtonDisplayText: "NEO Fresh"
     }
     LeftFreezerButton {
         width : frezzerWidth
@@ -36,12 +37,15 @@ Window {
 
         id: id_right_freezer_button
 
-        m_displayText: "냉장실 온도"
-    }
-    TouchPad {
-        width : frezzerWidth
-        height: parent.height
+        m_ButtonDisplayText: "냉장실 온도"
 
-        anchors.left: id_right_freezer_button.right
+        m_minTemperature: 0
+        m_maxTemperature: 5
     }
+//    TouchPad {
+//        width : frezzerWidth
+//        height: parent.height
+
+//        anchors.left: id_right_freezer_button.right
+//    }
 }
